@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "./pkg/auth/pb";
+
+// command to the location dir and use the 
+// command PATH=$PATH:$GOPATH/bin/ protoc --go_out=. *.proto
+
+// option go_package = "github.com/pkg/auth/pb";
+// option go_package = "github.com/redhaanggara21/go-grpc-api-gateway/pkg/auth/pb;auth";
+// option go_package = "./pkg/auth/pb";
+// option go_package = "pkg/auth/pb";
+
+// protoc --proto_path=pkg/auth/pb pkg/auth/pb/*.proto --go_out=plugins=grpc:pkg/auth/pb pkg/auth/pb/
+
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative pkg/auth/pb/auth.proto
+
+// protoc --go_out=. --go_opt=paths=source_relative \ --go-grpc_out=. --go-grpc_opt=paths=source_relative \ pkg/pb/*.proto
+
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc Validate(ValidateRequest) returns (ValidateResponse) {}
+}
+
+// Register
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message RegisterResponse {
+  int64 status = 1;
+  string error = 2;
+}
+
+// Login
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  int64 status = 1;
+  string error = 2;
+  string token = 3;
+}
+
+
+// Validate
+message ValidateRequest { string token = 1; }
+
+message ValidateResponse {
+  int64 status = 1;
+  string error = 2;
+  int64 userId = 3;
+}
