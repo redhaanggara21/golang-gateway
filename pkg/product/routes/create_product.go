@@ -30,11 +30,13 @@ func CreateProduct(ctx *gin.Context, c pb.ProductServiceClient) {
 		context.Background(),
 		&pb.CreateProductRequest{
 			Name:  b.Name,
-			SKU:   "00x00",
+			Sku:   b.SKU,
 			Stock: b.Stock,
 			Price: b.Price,
 		},
 	)
+
+	fmt.Println()
 
 	if err != nil {
 		ctx.AbortWithError(http.StatusBadGateway, err)
