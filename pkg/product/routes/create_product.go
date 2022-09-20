@@ -30,7 +30,7 @@ func CreateProduct(ctx *gin.Context, c pb.ProductServiceClient) {
 		context.Background(),
 		&pb.CreateProductRequest{
 			Name:  b.Name,
-			Sku: b.SKU
+			Sku:   b.SKU,
 			Stock: b.Stock,
 			Price: b.Price,
 		},
