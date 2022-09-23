@@ -9,7 +9,7 @@ import (
 	"github.com/redhaanggara21/go-grpc-api-gateway/pkg/brand/pb"
 )
 
-func FineOne(ctx *gin.Context, c pb.BrandServiceClient) {
+func FindOne(ctx *gin.Context, c pb.BrandServiceClient) {
 	id, err := strconv.ParseInt(ctx.Param("id"), 10, 32)
 
 	if err != nil {

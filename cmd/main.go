@@ -22,6 +22,7 @@ func main() {
 	r := gin.Default()
 
 	fmt.Print(&c)
+
 	authSvc := *auth.RegisterRoutes(r, &c)
 	product.RegisterRoutes(r, &c, &authSvc)
 	order.RegisterRoutes(r, &c, &authSvc)
