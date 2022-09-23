@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -21,7 +20,7 @@ func main() {
 
 	r := gin.Default()
 
-	fmt.Print(&c)
+	// fmt.Print(&c)
 
 	authSvc := *auth.RegisterRoutes(r, &c)
 	product.RegisterRoutes(r, &c, &authSvc)

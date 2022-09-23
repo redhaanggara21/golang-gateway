@@ -16,6 +16,9 @@ type CreateBrandRequestBody struct {
 func CreateBrand(ctx *gin.Context, c pb.BrandServiceClient) {
 	b := CreateBrandRequestBody{}
 
+	b.brandName = "a"
+	b.dateCreated = "120x"
+
 	if err := ctx.BindJSON(&b); err != nil {
 		ctx.AbortWithError(http.StatusBadRequest, err)
 		return

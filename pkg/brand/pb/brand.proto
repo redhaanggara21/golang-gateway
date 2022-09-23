@@ -16,7 +16,7 @@ message CreateBrandRequest {
   string dateCreated = 2;
 }
 
-message CreateProductResponse {
+message CreateBrandResponse {
   int64 status = 1;
   string error = 2;
   int64 id = 3;
