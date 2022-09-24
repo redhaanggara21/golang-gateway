@@ -9,15 +9,12 @@ import (
 )
 
 type CreateBrandRequestBody struct {
-	brandName   string `json:"name"`
-	dateCreated string `json:"date"`
+	BrandName   string `json:"brandName"`
+	DateCreated string `json:"dateCreated"`
 }
 
 func CreateBrand(ctx *gin.Context, c pb.BrandServiceClient) {
 	b := CreateBrandRequestBody{}
-
-	b.brandName = "a"
-	b.dateCreated = "120x"
 
 	if err := ctx.BindJSON(&b); err != nil {
 		ctx.AbortWithError(http.StatusBadRequest, err)
@@ -27,8 +24,8 @@ func CreateBrand(ctx *gin.Context, c pb.BrandServiceClient) {
 	res, err := c.CreateBrand(
 		context.Background(),
 		&pb.CreateBrandRequest{
-			BrandName:   b.brandName,
-			DateCreated: b.dateCreated,
+			BrandName:   b.BrandName,
+			DateCreated: b.DateCreated,
 		},
 	)
 

@@ -29,7 +29,9 @@ message FindOneData {
   string dateCreated = 3;
 }
 
-message FindOneRequest { int64 id = 1; }
+message FindOneRequest { 
+  int64 id = 1; 
+}
 
 message FindOneResponse {
   int64 status = 1;
