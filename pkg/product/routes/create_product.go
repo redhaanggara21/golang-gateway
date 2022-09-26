@@ -24,8 +24,6 @@ func CreateProduct(ctx *gin.Context, c pb.ProductServiceClient) {
 		return
 	}
 
-	fmt.Println(b)
-
 	res, err := c.CreateProduct(
 		context.Background(),
 		&pb.CreateProductRequest{
@@ -36,7 +34,7 @@ func CreateProduct(ctx *gin.Context, c pb.ProductServiceClient) {
 		},
 	)
 
-	fmt.Println()
+	fmt.Print(&res)
 
 	if err != nil {
 		ctx.AbortWithError(http.StatusBadGateway, err)

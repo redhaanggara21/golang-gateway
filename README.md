@@ -13,3 +13,5 @@ check grpc:
 
 1. compile one and one using command example: protoc -I pkg/product/pb/ pkg/product/pb/product.proto --go_out=plugins=grpc:.
     still not found how to generaly compiles
+2. the another options: protoc --go_out=plugins=grpc:. **/*.proto
+3. still find another way

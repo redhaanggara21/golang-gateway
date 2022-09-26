@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package brand;
+
+option go_package = "./pkg/brand/pb";
+
+service BrandService {
+  rpc CreateBrand(CreateBrandRequest) returns (CreateBrandResponse) {}
+  rpc FindOne(FindOneRequest) returns (FindOneResponse) {}
+}
+
+// CreateBrand
+message CreateBrandRequest {
+  string brandName = 1;
+  string dateCreated = 2;
+}
+
+message CreateBrandResponse {
+  int64 status = 1;
+  string error = 2;
+  int64 id = 3;
+}
+
+// FindOne
+message FindOneData {
+  int64 id = 1;
+  string brandName = 2;
+  string dateCreated = 3;
+}
+
+message FindOneRequest { 
+  int64 id = 1; 
+}
+
+message FindOneResponse {
+  int64 status = 1;
+  string error = 2;
+  FindOneData data = 3;
+}
