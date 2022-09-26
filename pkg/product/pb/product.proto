@@ -11,7 +11,6 @@ service ProductService {
 }
 
 // CreateProduct
-
 message CreateProductRequest {
   string name = 1;
   string sku = 2;
@@ -26,7 +25,6 @@ message CreateProductResponse {
 }
 
 // FindOne
-
 message FindOneData {
   int64 id = 1;
   string name = 2;

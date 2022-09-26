@@ -1,28 +1,32 @@
 package main
 
 import (
-    "log"
+	"log"
 
-    "github.com/gin-gonic/gin"
-    "github.com/redhaanggara21/go-grpc-api-gateway/pkg/auth"
-    "github.com/redhaanggara21/go-grpc-api-gateway/pkg/config"
-    "github.com/redhaanggara21/go-grpc-api-gateway/pkg/order"
-    "github.com/redhaanggara21/go-grpc-api-gateway/pkg/product"
+	"github.com/gin-gonic/gin"
+	"github.com/redhaanggara21/go-grpc-api-gateway/pkg/auth"
+	"github.com/redhaanggara21/go-grpc-api-gateway/pkg/brand"
+	"github.com/redhaanggara21/go-grpc-api-gateway/pkg/config"
+	"github.com/redhaanggara21/go-grpc-api-gateway/pkg/order"
+	"github.com/redhaanggara21/go-grpc-api-gateway/pkg/product"
 )
 
 func main() {
-    c, err := config.LoadConfig()
+	c, err := config.LoadConfig()
 
-    if err != nil {
-        log.Fatalln("Failed at config", err)
-    }
+	if err != nil {
+		log.Fatalln("Failed at config", err)
+	}
 
-    r := gin.Default()
+	r := gin.Default()
 
-    authSvc := *auth.RegisterRoutes(r, &c)
-    product.RegisterRoutes(r, &c, &authSvc)
-    order.RegisterRoutes(r, &c, &authSvc)
-    //some command and check in
+	// fmt.Print(&c)
 
-    r.Run(c.Port)
+	authSvc := *auth.RegisterRoutes(r, &c)
+	product.RegisterRoutes(r, &c, &authSvc)
+	order.RegisterRoutes(r, &c, &authSvc)
+	brand.RegisterRoutes(r, &c, &authSvc)
+	//some command and check in
+
+	r.Run(c.Port)
 }
