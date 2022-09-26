@@ -2,6 +2,7 @@ package routes
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -32,6 +33,8 @@ func CreateProduct(ctx *gin.Context, c pb.ProductServiceClient) {
 			Price: b.Price,
 		},
 	)
+
+	fmt.Print(&res)
 
 	if err != nil {
 		ctx.AbortWithError(http.StatusBadGateway, err)

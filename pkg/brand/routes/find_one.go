@@ -2,7 +2,6 @@ package routes
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -22,7 +21,7 @@ func FindOne(ctx *gin.Context, c pb.BrandServiceClient) {
 		Id: int64(id),
 	})
 
-	fmt.Print(res)
+	// fmt.Print(res)
 
 	if err != nil {
 		ctx.AbortWithError(http.StatusBadGateway, err)

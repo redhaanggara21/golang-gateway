@@ -159,6 +159,7 @@ func (x *CreateProductResponse) GetId() int64 {
 	return 0
 }
 
+// FindOne
 type FindOneData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

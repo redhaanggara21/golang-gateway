@@ -2,6 +2,7 @@ package routes
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -28,6 +29,8 @@ func CreateBrand(ctx *gin.Context, c pb.BrandServiceClient) {
 			DateCreated: b.DateCreated,
 		},
 	)
+
+	fmt.Print(&res)
 
 	if err != nil {
 		ctx.AbortWithError(http.StatusBadGateway, err)

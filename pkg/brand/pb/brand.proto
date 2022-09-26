@@ -1,4 +1,3 @@
-
 syntax = "proto3";
 
 package brand;
@@ -6,7 +5,7 @@ package brand;
 option go_package = "./pkg/brand/pb";
 
 service BrandService {
-  rpc CreateBrand(CreateBrandRequest) returns (CreateBrandRequest) {}
+  rpc CreateBrand(CreateBrandRequest) returns (CreateBrandResponse) {}
   rpc FindOne(FindOneRequest) returns (FindOneResponse) {}
 }
 
